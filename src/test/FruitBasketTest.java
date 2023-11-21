@@ -31,12 +31,15 @@ public class FruitBasketTest {
         .toString());
     }
 
+//    This test should generate a compiler error if uncommented. It's kept for verification of this fact.
+//    This is due to incompatible types. appleFruitBasket.add expects an Apple,not a Banana, and thus the compiler
+//    fails.
 //    @Test
 //    void addBananasToAppleBasket(){
 //        createBasket("Apple");
 //        Banana banana = new Banana();
-//        appleFruitBasket.add(banana); //blocked by compiler. Very nice.
-//        Assertions.assertEquals(true, appleFruitBasket.isEmpty());
+//        appleFruitBasket.add(banana);
+//        Assertions.assertTrue(appleFruitBasket.isEmpty());
 //    }
 
     @Test
@@ -49,9 +52,10 @@ public class FruitBasketTest {
         appleFruitBasket.add(apple3);
         appleFruitBasket.add(apple2);
         appleFruitBasket.get();
-        Assertions.assertEquals(2, appleFruitBasket.size()); //apple 3 and apple 2
+        Assertions.assertEquals(2, appleFruitBasket.size()); //expected: apple 3 and apple 2 remain.
         appleFruitBasket.get();
-        Assertions.assertEquals(1, appleFruitBasket.size()); //apple 2
+        Assertions.assertEquals(1, appleFruitBasket.size()); //expected apple 2 remains.
+        //debugger confirms the expected memory addresses.
     }
 
     private void createBasket(String type){
