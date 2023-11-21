@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -31,10 +32,22 @@ public class FruitBasket<F extends Fruit> {
     }
 
     public F get(){
+        //retrieve the oldest apple (as in added to the list longest ago); removing it from the list and returning it.
         F content = contents.get(0);
         contents.remove(content);
         return content;
     }
 
+    private String[] printContent(){
+        String[] content = new String[contents.size()];
+        for (int fruit = 0; fruit < contents.size(); fruit++) {
+            content[fruit] = contents.get(fruit).toString();
+        }
+        return content;
+    }
 
+    @Override
+    public String toString() {
+        return String.format("The contents of this basket are: %s", Arrays.toString(printContent()));
+    }
 } // end of FruitBasket
